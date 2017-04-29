@@ -1,0 +1,33 @@
+{
+    "name":                 "recuperate",
+    "version":              "0.0.1",
+    "description":
+
+      "Comparator function builder.",
+
+    "keywords":
+    [
+                            "comparator", "sort"
+    ],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "homepage":             "https://github.com/bigeasy/recuperate",
+    "bugs":                 "https://github.com/bigeasy/recuperate/issues",
+    "license":              "MIT",
+    "repository":
+    {
+                            "type": "git",
+                            "url": "http://github.com/bigeasy/recuperate.git"
+    },
+    "dependencies":
+    {
+    },
+    "devDependencies":
+    {
+                            "proof":                        "3.0.x"
+    },
+    "main":                 "recuperate",
+    "scripts":
+    {
+                            "test": "proof platform win32 && proof test */*.t.js || t/test"
+    }
+}
