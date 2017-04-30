@@ -30,6 +30,37 @@
 
             </div>
 
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">f, v</span>) </span>{
+    <span class="hljs-keyword">var</span> vargs = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>), match = <span class="hljs-literal">null</span>
+    <span class="hljs-keyword">if</span> (vargs[<span class="hljs-number">0</span>] <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">RegExp</span>) {
+        <span class="hljs-keyword">var</span> $ = <span class="hljs-regexp">/^\/\^([$\w][$\w\d]*):/</span>.exec(vargs[<span class="hljs-number">0</span>].toString())
+        <span class="hljs-keyword">var</span> test = $ ? {
+            <span class="hljs-attr">regex</span>: vargs.shift(),
+            <span class="hljs-attr">prefix</span>: $[<span class="hljs-number">1</span>] + <span class="hljs-string">':'</span>,
+            <span class="hljs-attr">property</span>: $[<span class="hljs-number">1</span>]
+        } : {
+            <span class="hljs-attr">regex</span>: vargs.shift(),
+            <span class="hljs-attr">prefix</span>: <span class="hljs-string">''</span>,
+            <span class="hljs-attr">property</span>: <span class="hljs-string">'message'</span>
+        }
+        match = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) </span>{
+            <span class="hljs-keyword">return</span> test.regex.test(test.prefix + error[test.property])
+        }
+    } <span class="hljs-keyword">else</span> {
+        match = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> }
+    }
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">return</span> vargs.shift().call()
+    } <span class="hljs-keyword">catch</span> (e) {
+        <span class="hljs-keyword">if</span> (!match(e)) {
+            <span class="hljs-keyword">throw</span> e
+        }
+        <span class="hljs-keyword">if</span> (vargs.length) {
+            <span class="hljs-keyword">return</span> vargs.shift()
+        }
+    }
+}</pre></div></div>
+
         </li>
 
     </ul>
