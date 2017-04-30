@@ -3,7 +3,7 @@
     "version":              "0.0.1",
     "description":
 
-      "Comparator function builder.",
+      "Try a function, catch an error and return a default.",
 
     "keywords":
     [
