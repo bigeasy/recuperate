@@ -1,6 +1,6 @@
 {
     "name":                 "recuperate",
-    "version":              "0.0.0",
+    "version":              "0.0.1",
     "description":
 
       "Try a function, catch an error and return a default.",
