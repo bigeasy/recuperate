@@ -1,4 +1,4 @@
-require('proof')(6, prove)
+require('proof')(7, prove)
 
 function prove (assert) {
     var recuperate = require('..')
@@ -7,6 +7,9 @@ function prove (assert) {
     assert(recuperate(function () {
         throw new Error
     }, 2), 2, 'recuperated')
+    assert(recuperate(function () {
+        throw new Error
+    }) ==  null, 'recuperated no return')
     assert(recuperate(/^thrown$/, function () {
         var error = new Error
         error.code = 'ENOENT'
